@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT Discussion (4)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>GIT Discussion (4)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>55-year-old man with a history of gallstone disease presents with a two day history of pain in the right upper quadrant. He feels 'like I have flu' and his wife reports he has had a fever for the past day. On examination his temperature is 38.1°C. blood pressure 100/60 mmHg. pulse 102/min and he is tender in the right upper quadrant. His sclera has a yellow-tinge. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Pancreatic cancer"> Pancreatic cancer</label>
+                <label><input type="radio" name="q1" value="Biliary colic"> Biliary colic</label>
+                <label><input type="radio" name="q1" value="Ascending cholangitis"> Ascending cholangitis</label>
+                <label><input type="radio" name="q1" value="Acute cholecystitis"> Acute cholecystitis</label>
+                <label><input type="radio" name="q1" value="Acute viral hepatitis"> Acute viral hepatitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>44-year-old obese female is noted to have gallstones during an abdominal ultrasound, which was requested due to repeated urinary tract infections. Apart from the repeated UTIs she is otherwise well. What is the most appropriate management of the gallstones?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Ursodeoxycholic acid"> Ursodeoxycholic acid</label>
+                <label><input type="radio" name="q2" value="Extracorporeal Shortwave Lithotripsy"> Extracorporeal Shortwave Lithotripsy</label>
+                <label><input type="radio" name="q2" value="List for laparoscopic cholecystectomy when 50 years old"> List for laparoscopic cholecystectomy when 50 years old</label>
+                <label><input type="radio" name="q2" value="Observation"> Observation</label>
+                <label><input type="radio" name="q2" value="List now for laparoscopic cholecystectomy"> List now for laparoscopic cholecystectomy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>A 37 year old female presents to the emergency department with colicky right upper quadrant pain and nausea. This is her fourth presentation in 6 months. Ultrasound confirms gallstones and she is referred to the surgeons for elective cholecystectomy. Which of the following dietary recommendations do you advise her to adopt?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Gluten-free diet"> Gluten-free diet</label>
+                <label><input type="radio" name="q3" value="High-fat diet"> High-fat diet</label>
+                <label><input type="radio" name="q3" value="Low-fat diet"> Low-fat diet</label>
+                <label><input type="radio" name="q3" value="Low-oxalate diet"> Low-oxalate diet</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>A 26-year-old man with a history of speech and behavioural problems presents with lethargy. On examination he is noted to have jaundiced sclera. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Wiskott-Aldrich syndrome"> Wiskott-Aldrich syndrome</label>
+                <label><input type="radio" name="q4" value="Haemochromatosis"> Haemochromatosis</label>
+                <label><input type="radio" name="q4" value="Friedreich's ataxia"> Friedreich's ataxia</label>
+                <label><input type="radio" name="q4" value="Wilson's disease"> Wilson's disease</label>
+                <label><input type="radio" name="q4" value="Acute intermittent porphyria"> Acute intermittent porphyria</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>21 years old man was admitted with confusion. He was noted to have a Kayser Fleisher ring. His liver function tests were consistent with acute hepatitis. Which chromosome contains the gene for this disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Chromosome 6"> Chromosome 6</label>
+                <label><input type="radio" name="q5" value="Chromosome 13"> Chromosome 13</label>
+                <label><input type="radio" name="q5" value="Chromosome 15"> Chromosome 15</label>
+                <label><input type="radio" name="q5" value="Chromosome 17"> Chromosome 17</label>
+                <label><input type="radio" name="q5" value="Chromosome 22"> Chromosome 22</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>Percent of kayser fleischer ring in wilson disease with neurological manifestations is ...</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="10%"> 10%</label>
+                <label><input type="radio" name="q6" value="25%"> 25%</label>
+                <label><input type="radio" name="q6" value="50%"> 50%</label>
+                <label><input type="radio" name="q6" value="80%"> 80%</label>
+                <label><input type="radio" name="q6" value="95%"> 95%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>Which one of the following is most suggestive of Wilson's disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="Reduced hepatic copper concentration"> Reduced hepatic copper concentration</label>
+                <label><input type="radio" name="q7" value="Reduced 24 hr urinary copper excretion"> Reduced 24 hr urinary copper excretion</label>
+                <label><input type="radio" name="q7" value="Increased skin pigmentation"> Increased skin pigmentation</label>
+                <label><input type="radio" name="q7" value="Reduced serum ceruloplasmin"> Reduced serum ceruloplasmin</label>
+                <label><input type="radio" name="q7" value="Reduced serum copper"> Reduced serum copper</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>A 19-year-old man is referred to the general medical clinic. For the past six months his family have noted increasing behavioural and speech problems. He himself has noticed that he is more clumsy than normal and reports excessive salivation. His older brother died of liver disease. Given the likely underlying condition, what is the most appropriate therapy?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="Vitamin B6 supplements"> Vitamin B6 supplements</label>
+                <label><input type="radio" name="q8" value="Venesection"> Venesection</label>
+                <label><input type="radio" name="q8" value="Ribavirin + interferon alpha"> Ribavirin + interferon alpha</label>
+                <label><input type="radio" name="q8" value="Pulsed methylprednisolone"> Pulsed methylprednisolone</label>
+                <label><input type="radio" name="q8" value="Penicillamine"> Penicillamine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>A 25-year-old man presents with lethargy and increased skin pigmentation. Blood tests reveal deranged liver function tests and impaired glucose tolerance. Given the likely diagnosis of haemochromatosis, what is the most appropriate initial investigation strategy?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Transferrin saturation + ferritin"> Transferrin saturation + ferritin</label>
+                <label><input type="radio" name="q9" value="Haematocrit + ferritin"> Haematocrit + ferritin</label>
+                <label><input type="radio" name="q9" value="Liver biopsy with Perl's stain"> Liver biopsy with Perl's stain</label>
+                <label><input type="radio" name="q9" value="Serum iron + ferritin"> Serum iron + ferritin</label>
+                <label><input type="radio" name="q9" value="Serum iron + haematocrit"> Serum iron + haematocrit</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>A 38-year old man is referred by his family physician to the outpatient clinic. His father had haemochromatosis and he is about to get married, so he is wondering whether he is likely to be affected. What would be the best first line screening test in this case?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="CT liver"> CT liver</label>
+                <label><input type="radio" name="q10" value="Ferritin"> Ferritin</label>
+                <label><input type="radio" name="q10" value="Liver biopsy"> Liver biopsy</label>
+                <label><input type="radio" name="q10" value="Transferrin saturation"> Transferrin saturation</label>
+                <label><input type="radio" name="q10" value="HFE gene"> HFE gene</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p>11- A 48-year-old woman complains of pruritus, steatorrhea and bruising. On examination, she is jaundiced, pigmented with spider naevi and hepatosplenomegaly. What is the most likely underlying diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="Alcoholic liver disease"> Alcoholic liver disease</label>
+                <label><input type="radio" name="q11" value="Alpha-1 antitrypsin deficiency"> Alpha-1 antitrypsin deficiency</label>
+                <label><input type="radio" name="q11" value="Autoimmune hepatitis"> Autoimmune hepatitis</label>
+                <label><input type="radio" name="q11" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q11" value="Wilson's disease"> Wilson's disease</label>
+            </div>
+        </div>
+        <div class="question" id="question-12">
+            <p>12- In the course of a 'well-woman' check offered by her employer, a 50 year old woman was found to have an antinuclear antibody with a multiple nuclear dot pattern, positive AMA and mildly abnormal liver function tests (LFTs). What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="Autoimmune hepatitis (AIH)"> Autoimmune hepatitis (AIH)</label>
+                <label><input type="radio" name="q12" value="Lupus"> Lupus</label>
+                <label><input type="radio" name="q12" value="Non-alcoholic steatohepatitis (NASH)"> Non-alcoholic steatohepatitis (NASH)</label>
+                <label><input type="radio" name="q12" value="Primary biliary cirrhosis (PBC)"> Primary biliary cirrhosis (PBC)</label>
+                <label><input type="radio" name="q12" value="Primary sclerosing cholangitis (PSC)"> Primary sclerosing cholangitis (PSC)</label>
+            </div>
+        </div>
+        <div class="question" id="question-13">
+            <p>13- Pruritus associated with cholestasis is mostly seen ..</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="On the palm and soles"> On the palm and soles</label>
+                <label><input type="radio" name="q13" value="At daytime"> At daytime</label>
+                <label><input type="radio" name="q13" value="After a cold bath"> After a cold bath</label>
+                <label><input type="radio" name="q13" value="In males"> In males</label>
+                <label><input type="radio" name="q13" value="Blacks"> Blacks</label>
+            </div>
+        </div>
+        <div class="question" id="question-14">
+            <p>14- A patient is having isolated elevation of serum alkaline phosphatase. The next test to be performed is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="Ultrasound of liver"> Ultrasound of liver</label>
+                <label><input type="radio" name="q14" value="Gamma Glutamyl transpeptidase (GGT) estimation"> Gamma Glutamyl transpeptidase (GGT) estimation</label>
+                <label><input type="radio" name="q14" value="Protein electrophoresis"> Protein electrophoresis</label>
+                <label><input type="radio" name="q14" value="Bone scan"> Bone scan</label>
+            </div>
+        </div>
+        <div class="question" id="question-15">
+            <p>15- Which one of the following disorders is most strongly associated with primary biliary cirrhosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="Systemic sclerosis"> Systemic sclerosis</label>
+                <label><input type="radio" name="q15" value="Thyroid disease"> Thyroid disease</label>
+                <label><input type="radio" name="q15" value="Sjogren's syndrome"> Sjogren's syndrome</label>
+                <label><input type="radio" name="q15" value="Rheumatoid arthritis"> Rheumatoid arthritis</label>
+                <label><input type="radio" name="q15" value="Systemic lupus erythematosus"> Systemic lupus erythematosus</label>
+            </div>
+        </div>
+        <div class="question" id="question-16">
+            <p>16- A 54-year-old female presents with fatigue, pruritus and xerostomia. Blood tests reveal the following ..<br>
+                Hb 13,9 g/dl<br>
+                WBC 6.1<br>
+                Platelets 246 *109/l<br>
+                Bilirubin 33 umol/l<br>
+                ALP 292. u/l<br>
+                ALT 47 u/l<br>
+                What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="Systemic lupus erythematosus"> Systemic lupus erythematosus</label>
+                <label><input type="radio" name="q16" value="Infectious mononucleosis"> Infectious mononucleosis</label>
+                <label><input type="radio" name="q16" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q16" value="Autoimmune hepatitis"> Autoimmune hepatitis</label>
+                <label><input type="radio" name="q16" value="Primary Sjogren's syndrome"> Primary Sjogren's syndrome</label>
+            </div>
+        </div>
+        <div class="question" id="question-17">
+            <p>17- What further test is most likely to reveal the diagnosis in the previous question?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Antinuclear antibodies"> Antinuclear antibodies</label>
+                <label><input type="radio" name="q17" value="Liver ultrasound"> Liver ultrasound</label>
+                <label><input type="radio" name="q17" value="Anti-mitochondrial antibodies"> Anti-mitochondrial antibodies</label>
+                <label><input type="radio" name="q17" value="Ceruloplasmin"> Ceruloplasmin</label>
+                <label><input type="radio" name="q17" value="Ferritin"> Ferritin</label>
+            </div>
+        </div>
+        <div class="question" id="question-18">
+            <p>18- A 60-year-old woman presents with chronic fatigue and mild pruritus. She has a history of rheumatoid arthritis and autoimmune thyroiditis. On examination, her liver is modestly enlarged, firm, and nontender; skin xanthomas are noted. Routine serum chemistry studies show: Albumin 4.1 g/dL, Bilirubin, total 1.3 mg/dL, Creatinine 0.8 mg/dL, AST 55U/L, ALT 48 U/L, Alkaline phosphatase 240 U/L, serum gamma-glutamyl transpeptidase level of 150 U/L, and total cholesterol of 240 mg/dL. Immunoglobulin studies reveal a marked elevation of serum lgM. Ultrasound demonstrates diffuse enlargement of the liver without marked echogenicity. Endoscopic retrograde cholangiography demonstrates an intact extrahepatic biliary tree accompanied by stricture and loss of ducts within the liver itself. Liver biopsy shows a florid bile duct lesion with patchy inflammation and destruction of septal and interlobular bile ducts. Antibodies directed against which of the following antigens are present in up to 95% of patients with this disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="Double-stranded DNA"> Double-stranded DNA</label>
+                <label><input type="radio" name="q18" value="Hepatitis A virus"> Hepatitis A virus</label>
+                <label><input type="radio" name="q18" value="Hepatitis B core antigen"> Hepatitis B core antigen</label>
+                <label><input type="radio" name="q18" value="Hepatitis C virus"> Hepatitis C virus</label>
+                <label><input type="radio" name="q18" value="Mitochondria"> Mitochondria</label>
+            </div>
+        </div>
+        <div class="question" id="question-19">
+            <p>19- A 54-year-old female is diagnosed with primary biliary cirrhosis. What is her increased risk of developing hepatocellular cancer, compared to a standard population?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="50% increased risk"> 50% increased risk</label>
+                <label><input type="radio" name="q19" value="3-fold increased risk"> 3-fold increased risk</label>
+                <label><input type="radio" name="q19" value="5-fold increased risk"> 5-fold increased risk</label>
+                <label><input type="radio" name="q19" value="10-fold increased risk"> 10-fold increased risk</label>
+                <label><input type="radio" name="q19" value="20-fold increased risk"> 20-fold increased risk</label>
+            </div>
+        </div>
+        <div class="question" id="question-20">
+            <p>20- Which of the following HLA antigen is associated with primary biliary cirrhosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="HLA B5"> HLA B5</label>
+                <label><input type="radio" name="q20" value="HLA B27"> HLA B27</label>
+                <label><input type="radio" name="q20" value="HLA A3"> HLA A3</label>
+                <label><input type="radio" name="q20" value="HLA DR8"> HLA DR8</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-21">
+            <p>21- The major immunoglobulin in primary biliary cirrhosis is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="IgM"> IgM</label>
+                <label><input type="radio" name="q21" value="IgA"> IgA</label>
+                <label><input type="radio" name="q21" value="IgG"> IgG</label>
+                <label><input type="radio" name="q21" value="IgD"> IgD</label>
+                <label><input type="radio" name="q21" value="IgE"> IgE</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- A 33-year-old woman was recently diagnosed with primary biliary cirrhosis (PBC). She is inquiring about available treatments for this condition, including if there is a cure for the disease. Which of the following treatments is most likely to “cure” her PBC?</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="ursodiol"> ursodiol</label>
+                <label><input type="radio" name="q22" value="methotrexate"> methotrexate</label>
+                <label><input type="radio" name="q22" value="azathioprine"> azathioprine</label>
+                <label><input type="radio" name="q22" value="liver transplantation"> liver transplantation</label>
+                <label><input type="radio" name="q22" value="glucocorticoids"> glucocorticoids</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23- Primary sclerosing cholangitis is most associated with:-</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q23" value="Crohn's disease"> Crohn's disease</label>
+                <label><input type="radio" name="q23" value="Hepatitis C infection"> Hepatitis C infection</label>
+                <label><input type="radio" name="q23" value="Ulcerative colitis"> Ulcerative colitis</label>
+                <label><input type="radio" name="q23" value="Coeliac disease"> Coeliac disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24- A 25-year-old man with a 7-year history of ulcerative colitis complaining of the insidious onset of progressive fatigue, pruritus, and jaundice. Laboratory studies showed elevation of serum alkaline phosphatase that is not accompanied by significant elevations of aspartate aminotransferase (AST) or alanine aminotransferase (ALT). An anti-mitochondrial antibody test is negative. Endoscopic retrograde cholangiography demonstrates multiple short strictures and saccular dilations of the biliary tree, both in extrahepatic and intrahepatic sites. Liver biopsy demonstrates bile duct proliferation, periductal fibrosis, inflammation, and loss of bile ducts. Which of the following is the most likely explanation for these findings?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Bile duct tumour"> Bile duct tumour</label>
+                <label><input type="radio" name="q24" value="Choledocholithiasis"> Choledocholithiasis</label>
+                <label><input type="radio" name="q24" value="Congenital polycystic liver"> Congenital polycystic liver</label>
+                <label><input type="radio" name="q24" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q24" value="Primary sclerosing cholangitis"> Primary sclerosing cholangitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25- A patient with primary sclerosing cholangitis is concerned about the prognosis of her disease. Which of the following is predictive of a poor outcome?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="Alkaline phosphatase (ALP) level"> Alkaline phosphatase (ALP) level</label>
+                <label><input type="radio" name="q25" value="AMA titre"> AMA titre</label>
+                <label><input type="radio" name="q25" value="Large liver size on ultrasound"> Large liver size on ultrasound</label>
+                <label><input type="radio" name="q25" value="Older age at disease onset"> Older age at disease onset</label>
+                <label><input type="radio" name="q25" value="Presence of intercurrent autoimmune disease"> Presence of intercurrent autoimmune disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- A 54-year-old female is admitted one week following a cholecystectomy with profuse diarrhoea. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="Campylobacter"> Campylobacter</label>
+                <label><input type="radio" name="q26" value="E. COli"> E. COli</label>
+                <label><input type="radio" name="q26" value="Clostridium difficile"> Clostridium difficile</label>
+                <label><input type="radio" name="q26" value="Salmonella"> Salmonella</label>
+                <label><input type="radio" name="q26" value="Staphylococcus aureus"> Staphylococcus aureus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27- A 72-year-old female is admitted with diarrhoea to the acute medical unit. A sigmoidoscopy is performed which shows multiple white plaques adhered to the gastrointestinal mucosa. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="Crohn's disease"> Crohn's disease</label>
+                <label><input type="radio" name="q27" value="Ulcerative colitis"> Ulcerative colitis</label>
+                <label><input type="radio" name="q27" value="ischaemic colitis"> ischaemic colitis</label>
+                <label><input type="radio" name="q27" value="Pseudomembranous colitis"> Pseudomembranous colitis</label>
+                <label><input type="radio" name="q27" value="Colorectal cancer"> Colorectal cancer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28- A 57-year-old man, recently discharged from the hospital, develops severe diarrhoea and abdominal pain. Sigmoidoscopy reveals a granular friable mucosa. Which of the following is the most common cause of this syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="ischemic colitis"> ischemic colitis</label>
+                <label><input type="radio" name="q28" value="rotavirus"> rotavirus</label>
+                <label><input type="radio" name="q28" value="Clostridium perfringens infection"> Clostridium perfringens infection</label>
+                <label><input type="radio" name="q28" value="cephalosporin therapy"> cephalosporin therapy</label>
+                <label><input type="radio" name="q28" value="bacterial invasion of the bowel wall"> bacterial invasion of the bowel wall</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- Which of the following antibiotics has the weakest association with the development of C difficile–associated disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="Ceftriaxone"> Ceftriaxone</label>
+                <label><input type="radio" name="q29" value="Ciprofoxacin"> Ciprofoxacin</label>
+                <label><input type="radio" name="q29" value="Clindamycin"> Clindamycin</label>
+                <label><input type="radio" name="q29" value="Moxifoxacin"> Moxifoxacin</label>
+                <label><input type="radio" name="q29" value="Piperacillin-tazobactam"> Piperacillin-tazobactam</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30- A 76-year-old man has a 4-day history of profuse watery diarrhoea coupled with abdominal pain. He was seen by his GP 2 weeks ago and started on oral amoxicillin for a lower respiratory tract infection. Stool sample analysis reveals Clostridium difficile enterotoxin. His observations are within normal range and the patient is apyrexial. Which of the following is the most appropriate treatment for this patient’s condition?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="Oral vancomycin"> Oral vancomycin</label>
+                <label><input type="radio" name="q30" value="Oral metronidazole"> Oral metronidazole</label>
+                <label><input type="radio" name="q30" value="Intravenous metronidazole"> Intravenous metronidazole</label>
+                <label><input type="radio" name="q30" value="Oral ciprofloxacin"> Oral ciprofloxacin</label>
+                <label><input type="radio" name="q30" value="No antibiotic treatment required"> No antibiotic treatment required</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-31">
+            <p>31- A 78-year-old woman is admitted with a productive cough and pyrexia to hospital. Chest x-ray shows pneumonia and she is commenced on intravenous ceftriaxone. Four days following admission a stool sample is sent because of diarrhoea. This confirms the suspected diagnosis of Clostridium difficile diarrhoea and a 10-day course of oral metronidazole is started. After 10 days her diarrhoea is ongoing but she remains clinically stable. What is the most appropriate treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="Oral vancomycin for 14 days"> Oral vancomycin for 14 days</label>
+                <label><input type="radio" name="q31" value="IV vancomycin for 3 days"> IV vancomycin for 3 days</label>
+                <label><input type="radio" name="q31" value="Oral rifampicin for 7 days"> Oral rifampicin for 7 days</label>
+                <label><input type="radio" name="q31" value="Oral clindamycin for 7 days"> Oral clindamycin for 7 days</label>
+                <label><input type="radio" name="q31" value="Oral metronidazole for a further 7 days"> Oral metronidazole for a further 7 days</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-32">
+            <p>32-You are asked to review a 78-year-old woman with a non-healing leg ulcer by the ward nurse. You notice she is very thin. What is the most appropriate tool to screen for malnutrition?</p>
+            <div class="options">
+                <label><input type="radio" name="q32" value="GBMS"> GBMS</label>
+                <label><input type="radio" name="q32" value="MN_10"> MN_10</label>
+                <label><input type="radio" name="q32" value="MUST"> MUST</label>
+                <label><input type="radio" name="q32" value="GP_MN"> GP_MN</label>
+                <label><input type="radio" name="q32" value="Waterlow score"> Waterlow score</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33-A 44-year-old man with alcoholic liver disease is admitted with pyrexia. He has been unwell for the past three days and has multiple previous admissions before with variceal bleeding. Examination shows multiple stigmata of chronic liver disease ascites and jaundice. Paracentesis is performed with the following results:
+            Neutrophils 487 cells/ul
+            What is the most appropriate treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="Therapeutic abdominal washout"> Therapeutic abdominal washout</label>
+                <label><input type="radio" name="q33" value="Intravenous vancomycin + metronidazole"> Intravenous vancomycin + metronidazole</label>
+                <label><input type="radio" name="q33" value="Intravenous cefotaxime"> Intravenous cefotaxime</label>
+                <label><input type="radio" name="q33" value="Insert an ascitic drain"> Insert an ascitic drain</label>
+                <label><input type="radio" name="q33" value="intravenous ciprofloxacin"> intravenous ciprofloxacin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34-A 63-year-old patient with known chronic hepatitis C complicated by cirrhosis presented with ascites, abdominal tenderness and peripheral edema. A diagnostic tap revealed a neutrophil count of 400/mm3 ( < 250mm ). Which of the following would be of most immediate benefit?</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="Fluid restriction and a no added salt diet"> Fluid restriction and a no added salt diet</label>
+                <label><input type="radio" name="q34" value="Intravenous antibiotics"> Intravenous antibiotics</label>
+                <label><input type="radio" name="q34" value="Oral spironolactone"> Oral spironolactone</label>
+                <label><input type="radio" name="q34" value="Therapeutic paracentesis"> Therapeutic paracentesis</label>
+                <label><input type="radio" name="q34" value="Trans-jugular intrahepatic Porto-systemic shunt"> Trans-jugular intrahepatic Porto-systemic shunt</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-35">
+            <p>35-A 76-year-old woman with a history of atrial fibrillation presents with abdominal pain and bloody diarrhoea. On examination her temperature is 37.8, pulse 102 / min and respiratory rate 30/min. Her abdomen is tender with generalised guarding. Blood tests reveal the following ..
+            Hb 10.9 g/dl
+            MCV 76 fl
+            Plt 348 * 109/l
+            WBC 23.4 * 109/l
+            Na+ 141 mmol/l
+            K+ 5.0 mmol/l
+            Bicarbonate 14 mmol/l
+            Urea 8.0 mmol/l
+            Creatinine 118 umol/l
+            What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q35" value="Diverticulitis"> Diverticulitis</label>
+                <label><input type="radio" name="q35" value="Mesenteric ischaemia"> Mesenteric ischaemia</label>
+                <label><input type="radio" name="q35" value="Campylobacter infection"> Campylobacter infection</label>
+                <label><input type="radio" name="q35" value="Ruptured abdominal aortic aneurysm"> Ruptured abdominal aortic aneurysm</label>
+                <label><input type="radio" name="q35" value="Ulcerative colitis"> Ulcerative colitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-36">
+            <p>36-A 75-year-old man has had acute, left-sided abdominal pain that started in the left iliac fossa. He suddenly passes stool mixed with dark blood clots. His temperature is 38.1°C, blood pressure is 110/85 mm Hg, pulse is 120/mm, and respirations are 18/min. abdominal examination demonstrates localised tenderness along the descending colon. An x-ray film taken after barium enema excludes intra-abdominal free air. The large bowel lumen is decreased and irregular, with mucosal thickening, and there is gas in the wall of the colon. Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="Appendicitis"> Appendicitis</label>
+                <label><input type="radio" name="q36" value="Colon cancer"> Colon cancer</label>
+                <label><input type="radio" name="q36" value="Crohn disease"> Crohn disease</label>
+                <label><input type="radio" name="q36" value="Ischemic colitis"> Ischemic colitis</label>
+                <label><input type="radio" name="q36" value="Ulcerative colitis"> Ulcerative colitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-37">
+            <p>37-A 70-year-old man who is known to have atrial fibrillation presents with abdominal pain and rectal bleeding. A diagnosis of ischaemic colitis is suspected. Which part of the colon is most likely to be affected?</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="Hepatic flexure"> Hepatic flexure</label>
+                <label><input type="radio" name="q37" value="Descending colon"> Descending colon</label>
+                <label><input type="radio" name="q37" value="Splenic flexure"> Splenic flexure</label>
+                <label><input type="radio" name="q37" value="Ascending colon"> Ascending colon</label>
+                <label><input type="radio" name="q37" value="Rectum"> Rectum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-38">
+            <p>38-Melanosis coli indicates ..</p>
+            <div class="options">
+                <label><input type="radio" name="q38" value="Anthraquinone laxative abuse"> Anthraquinone laxative abuse</label>
+                <label><input type="radio" name="q38" value="Hypereosinophilic enteritis"> Hypereosinophilic enteritis</label>
+                <label><input type="radio" name="q38" value="Crohn's disease"> Crohn's disease</label>
+                <label><input type="radio" name="q38" value="Melanoma affecting colon"> Melanoma affecting colon</label>
+                <label><input type="radio" name="q38" value="Excess melatonin secretion"> Excess melatonin secretion</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-39">
+            <p>39-A 62-year-old woman who has recently been treated for ascending cholangitis is referred to hospital due to persistent fever and anorexia. An ultrasound scan reveals the presence of a liver abscess. What is the most appropriate antibiotic therapy to accompany drainage of the abscess?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="Vancomycin + meropenem"> Vancomycin + meropenem</label>
+                <label><input type="radio" name="q39" value="Co-amoxiclav + metronidazole"> Co-amoxiclav + metronidazole</label>
+                <label><input type="radio" name="q39" value="Amoxicillin + ciprofloxacin + metronidazole"> Amoxicillin + ciprofloxacin + metronidazole</label>
+                <label><input type="radio" name="q39" value="Clindamycin + metronidazole"> Clindamycin + metronidazole</label>
+                <label><input type="radio" name="q39" value="Metronidazole + vancomycin"> Metronidazole + vancomycin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-40">
+            <p>40-A 77-year-old woman is brought to the emergency room because of nonspecific abdominal discomfort. She has no anorexia, fever, chills, or weight loss. Her abdomen is soft and non-tender on physical examination. Abdominal x-rays show lots of stool in the colon, but no free air or air-fluid levels. The amylase is 150 U/L (25–125 U/L), and the rest of her biochemistry and complete blood count are normal. Which of the following conditions can cause a false-positive elevation in the serum amylase?</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="maturity-onset diabetes mellitus (DM)"> maturity-onset diabetes mellitus (DM)</label>
+                <label><input type="radio" name="q40" value="gastric ulcer"> gastric ulcer</label>
+                <label><input type="radio" name="q40" value="renal failure"> renal failure</label>
+                <label><input type="radio" name="q40" value="sulfonamide therapy"> sulfonamide therapy</label>
+                <label><input type="radio" name="q40" value="gastric carcinoma"> gastric carcinoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-41">
+            <p>41-The action of which one of the following brush border enzymes results in the formation of glucose and galactose?</p>
+            <div class="options">
+                <label><input type="radio" name="q41" value="Dipeptidase"> Dipeptidase</label>
+                <label><input type="radio" name="q41" value="A-dextrinase"> A-dextrinase</label>
+                <label><input type="radio" name="q41" value="Maltase"> Maltase</label>
+                <label><input type="radio" name="q41" value="Lactase"> Lactase</label>
+                <label><input type="radio" name="q41" value="Sucrase"> Sucrase</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-42">
+            <p>42- Which of the statements is true when considering the normal function of the colon?</p>
+            <div class="options">
+                <label><input type="radio" name="q42" value="Absorption of folic acid occurs in the colon"> Absorption of folic acid occurs in the colon</label>
+                <label><input type="radio" name="q42" value="The colon absorbs 50% of ingested protein and fats"> The colon absorbs 50% of ingested protein and fats</label>
+                <label><input type="radio" name="q42" value="The colon absorbs electrolytes and water"> The colon absorbs electrolytes and water</label>
+                <label><input type="radio" name="q42" value="The colonic microbiota is acquired at birth and is static throughout life"> The colonic microbiota is acquired at birth and is static throughout life</label>
+                <label><input type="radio" name="q42" value="The pH of the colonic lumen is 3"> The pH of the colonic lumen is 3</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-43">
+            <p>43- A 64 year old female with recent change in bowel habit and rectal bleeding who is awaiting lower Gl investigation presents to the emergency department with dark urine and pale stool. On examination she is jaundiced with hepatomegaly and moderate-volume ascites.
+            LFTs:
+            Bilirubin 240 umol/L (14.03 mg/dl)
+            ALT 84 U/L
+            ALP 1400 U/L
+            Albumin 31 g/L
+            Carcinoembryonic antigen (CEA) positive 230 u/L
+            Ascitic fluid: blood-stained
+            Ultrasound: multiple liver lesions compressing bile ducts
+            Which of the following is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q43" value="Cholangiocarcinoma"> Cholangiocarcinoma</label>
+                <label><input type="radio" name="q43" value="Colorectal cancer"> Colorectal cancer</label>
+                <label><input type="radio" name="q43" value="Focal nodular hyperplasia"> Focal nodular hyperplasia</label>
+                <label><input type="radio" name="q43" value="Hepatic adenoma"> Hepatic adenoma</label>
+                <label><input type="radio" name="q43" value="HCC"> HCC</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-44">
+            <p>44- A 63-year-old man has stools positive for occult blood. Which of the following is the most likely location of bowel cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q44" value="cecum"> cecum</label>
+                <label><input type="radio" name="q44" value="sigmoid"> sigmoid</label>
+                <label><input type="radio" name="q44" value="transverse colon"> transverse colon</label>
+                <label><input type="radio" name="q44" value="appendix"> appendix</label>
+                <label><input type="radio" name="q44" value="ascending colon"> ascending colon</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-45">
+            <p>45- Carcinoma of the large intestine is mostly found in ..</p>
+            <div class="options">
+                <label><input type="radio" name="q45" value="Caecum"> Caecum</label>
+                <label><input type="radio" name="q45" value="Sigmoid Colon"> Sigmoid Colon</label>
+                <label><input type="radio" name="q45" value="Transverse Colon"> Transverse Colon</label>
+                <label><input type="radio" name="q45" value="Ascending Colon"> Ascending Colon</label>
+                <label><input type="radio" name="q45" value="Descending Colon"> Descending Colon</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-46">
+            <p>46-The most common type of inherited colorectal cancer:-</p>
+            <div class="options">
+                <label><input type="radio" name="q46" value="Familial adenomatous polyposis"> Familial adenomatous polyposis</label>
+                <label><input type="radio" name="q46" value="Li-Fraumeni syndrome"> Li-Fraumeni syndrome</label>
+                <label><input type="radio" name="q46" value="Hereditary non-polyposis colorectal carcinoma"> Hereditary non-polyposis colorectal carcinoma</label>
+                <label><input type="radio" name="q46" value="Fanconi syndrome"> Fanconi syndrome</label>
+                <label><input type="radio" name="q46" value="Peutz-Jeghers syndrome"> Peutz-Jeghers syndrome</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-47">
+            <p>47-Which of the following statements is true regarding the genetics of colon cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q47" value="Hereditary non-polyposis colorectal carcinoma is a autosomal recessive condition"> Hereditary non-polyposis colorectal carcinoma is a autosomal recessive condition</label>
+                <label><input type="radio" name="q47" value="The adenomatous polyposis coli gene is located on chromosome 12"> The adenomatous polyposis coli gene is located on chromosome 12</label>
+                <label><input type="radio" name="q47" value="Around 50% of patients with familial adenomatous polyposis develop colon cancer"> Around 50% of patients with familial adenomatous polyposis develop colon cancer</label>
+                <label><input type="radio" name="q47" value="Both hereditary and non-hereditary colon cancers typically present at 60-70 yrs of age"> Both hereditary and non-hereditary colon cancers typically present at 60-70 yrs of age</label>
+                <label><input type="radio" name="q47" value="Non-inherited colon cancer often involves mutation of the adenomatous polyposis coli gene"> Non-inherited colon cancer often involves mutation of the adenomatous polyposis coli gene</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-48">
+            <p>48-A 44-year-old man is diagnosed with right-sided colon cancer. He has a strong family history of colorectal and ovarian cancer. Genetic tests confirm a diagnosis of hereditary non-polyposis colorectal cancer (HNPCC) due to a defect in the MSH2 gene. What is the function of this gene?</p>
+            <div class="options">
+                <label><input type="radio" name="q48" value="Signal transduction"> Signal transduction</label>
+                <label><input type="radio" name="q48" value="Apoptosis regulation"> Apoptosis regulation</label>
+                <label><input type="radio" name="q48" value="Epidermal growth factor receptor"> Epidermal growth factor receptor</label>
+                <label><input type="radio" name="q48" value="DNA mismatch repair"> DNA mismatch repair</label>
+                <label><input type="radio" name="q48" value="Regulatory GTPase"> Regulatory GTPase</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-49">
+            <p>49- A 55-year-old man is brought to ER by the police after being found wandering and incoherent to himself. The man is unable to give a coherent history. The initial impression is of an emaciated, jaundiced, and confused man who appears older than his stated age. Vital signs are stable and within normal limits. The breath has a musty, sweet odour. Abdominal examination shows ascites and marked nodularity of the liver edge. A "caput medusa" is seen near the umbilicus. Neurologic examination is notable for asterixis. A toxicology screen is negative. Aspartate aminotransferase (AST), alanine aminotransferase (ALT), and blood ammonia are all moderately increased. The man is admitted to the hospital and given an extremely low protein diet with oral carbohydrate supplementation. The bowels are cleared with an enema. Which of the following is the most appropriate pharmacotherapy?</p>
+            <div class="options">
+                <label><input type="radio" name="q49" value="Ampicillin, oral"> Ampicillin, oral</label>
+                <label><input type="radio" name="q49" value="Benzathine penicillin, intramuscular"> Benzathine penicillin, intramuscular</label>
+                <label><input type="radio" name="q49" value="Ceftriaxone, oral"> Ceftriaxone, oral</label>
+                <label><input type="radio" name="q49" value="Rifuxamine, oral"> Rifuxamine, oral</label>
+                <label><input type="radio" name="q49" value="Penicillin G IV"> Penicillin G IV</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-50">
+            <p>50-A 47-year-old man with a history of alcohol liver disease is admitted to the gastroenterology ward. He has developed tense ascites again and a plan is made to site an ascitic drain. His renal function after 2 days is as follows:<br>
+            Na+ 131 mmol/l<br>
+            K+ 3.8 mmol/l<br>
+            Urea 12.2 mmol/l<br>
+            Creatinine 205 µmol/L<br>
+            Which of the following pathophysiological changes is most likely to be responsible for the declining renal function?</p>
+            <div class="options">
+                <label><input type="radio" name="q50" value="Splanchnic vasoconstriction"> Splanchnic vasoconstriction</label>
+                <label><input type="radio" name="q50" value="Splanchnic vasodilation"> Splanchnic vasodilation</label>
+                <label><input type="radio" name="q50" value="Ammonia-induced nephropathy"> Ammonia-induced nephropathy</label>
+                <label><input type="radio" name="q50" value="Intrahepatic portosystemic shunting of blood"> Intrahepatic portosystemic shunting of blood</label>
+                <label><input type="radio" name="q50" value="Renal artery vasodilation"> Renal artery vasodilation</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-51">
+            <p>51-A 34-year-old woman with a history of alcohol excess is admitted with abdominal swelling to the Acute Medical Unit. A diagnosis of ascites secondary to liver cirrhosis is made and paracentesis is performed.<br>
+            The serum creatinine on admission is 95 pmol/l. Ten days after admission urine output decreases significantly and blood tests reveal ..<br>
+            Na* 129 mmol/l<br>
+            K+ 3.7 mmol/l<br>
+            Urea 14.2 mmol/l<br>
+            Creatinine 221 umol/l<br>
+            Albumin is given to correct suspected hypovolaemia. What is the most appropriate further management?</p>
+            <div class="options">
+                <label><input type="radio" name="q51" value="Octreotide"> Octreotide</label>
+                <label><input type="radio" name="q51" value="Propranolol"> Propranolol</label>
+                <label><input type="radio" name="q51" value="Terlipressin"> Terlipressin</label>
+                <label><input type="radio" name="q51" value="Acetylcysteine"> Acetylcysteine</label>
+                <label><input type="radio" name="q51" value="Dopamine"> Dopamine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-52">
+            <p>52-A 25-year-old female currently under investigation for secondary amenorrhoea presents with jaundiced sclera. On examination spider naevi are present along with tender hepatomegaly. Blood tests show..<br>
+            Hb 11.6 g/dl<br>
+            Plt 145 * 10^9/l<br>
+            WCC 6.4<br>
+            Albumin 33 g/l<br>
+            Bilirubin 78 umol/l<br>
+            ALT 245 iu/l<br>
+            What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q52" value="Haemochromatosis"> Haemochromatosis</label>
+                <label><input type="radio" name="q52" value="Wilson's disease"> Wilson's disease</label>
+                <label><input type="radio" name="q52" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q52" value="Autoimmune hepatitis"> Autoimmune hepatitis</label>
+                <label><input type="radio" name="q52" value="Primary sclerosing cholangitis"> Primary sclerosing cholangitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-53">
+            <p>53-A 27-year-old female is referred to the medical outpatient clinic due to a long history of fatigue and joint pains. An autoimmune screen is done which is positive for smooth muscle antibodies. What is the most appropriate next investigation?</p>
+            <div class="options">
+                <label><input type="radio" name="q53" value="Liver function tests"> Liver function tests</label>
+                <label><input type="radio" name="q53" value="Thyroid function tests"> Thyroid function tests</label>
+                <label><input type="radio" name="q53" value="Creatine Kinase"> Creatine Kinase</label>
+                <label><input type="radio" name="q53" value="Serum glucose"> Serum glucose</label>
+                <label><input type="radio" name="q53" value="Electrocardiogram"> Electrocardiogram</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-54">
+            <p>54-Autoimmune hepatitis is most characteristically associated with elevated levels of which one of the following immunoglobulins?</p>
+            <div class="options">
+                <label><input type="radio" name="q54" value="IgE"> IgE</label>
+                <label><input type="radio" name="q54" value="IgA"> IgA</label>
+                <label><input type="radio" name="q54" value="IgD"> IgD</label>
+                <label><input type="radio" name="q54" value="IgM"> IgM</label>
+                <label><input type="radio" name="q54" value="IgG"> IgG</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-55">
+            <p>55- A 53 year old bank employee in the UK is found at a routine check-up to have abnormal LFTs. What is the most common aetiology for abnormal liver biochemistry in developed countries?</p>
+            <div class="options">
+                <label><input type="radio" name="q55" value="Alcoholic liver disease"> Alcoholic liver disease</label>
+                <label><input type="radio" name="q55" value="Autoimmune hepatitis"> Autoimmune hepatitis</label>
+                <label><input type="radio" name="q55" value="Hepatitis C"> Hepatitis C</label>
+                <label><input type="radio" name="q55" value="NAFLD"> NAFLD</label>
+                <label><input type="radio" name="q55" value="Primary biliary cholangitis"> Primary biliary cholangitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-56">
+            <p>56- The most common gastrointestinal disorder in community is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q56" value="Diverticulitis"> Diverticulitis</label>
+                <label><input type="radio" name="q56" value="Duodenal ulcer"> Duodenal ulcer</label>
+                <label><input type="radio" name="q56" value="Reflux esophagitis"> Reflux esophagitis</label>
+                <label><input type="radio" name="q56" value="Irritable bowel syndrome"> Irritable bowel syndrome</label>
+                <label><input type="radio" name="q56" value="peptic ulcer"> peptic ulcer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-57">
+            <p>57-Which one of the following is not associated with non-alcoholic steatohepatitis?</p>
+            <div class="options">
+                <label><input type="radio" name="q57" value="Hyperlipidaemia"> Hyperlipidaemia</label>
+                <label><input type="radio" name="q57" value="Obesity"> Obesity</label>
+                <label><input type="radio" name="q57" value="Sudden weight loss or starvation"> Sudden weight loss or starvation</label>
+                <label><input type="radio" name="q57" value="Jejunoileal bypass"> Jejunoileal bypass</label>
+                <label><input type="radio" name="q57" value="Type 1 diabetes mellitus"> Type 1 diabetes mellitus</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-58">
+            <p>58-A 52-year-old woman is diagnosed with non-alcoholic steatohepatitis following a liver biopsy. What is the single most important step to help prevent the progression of her disease?<br>
+                - Stop smoking<br>
+                - Start statin therapy<br>
+                - Eat more omega-3 fatty acids<br>
+                - Start sulfonylurea therapy<br>
+                - Weight loss
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q58" value="Stop smoking"> Stop smoking</label>
+                <label><input type="radio" name="q58" value="Start statin therapy"> Start statin therapy</label>
+                <label><input type="radio" name="q58" value="Eat more omega-3 fatty acids"> Eat more omega-3 fatty acids</label>
+                <label><input type="radio" name="q58" value="Start sulfonylurea therapy"> Start sulfonylurea therapy</label>
+                <label><input type="radio" name="q58" value="Weight loss"> Weight loss</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-59">
+            <p>59- Regarding non-alcoholic steato-hepatosis (NASH), all are true EXCEPT..<br>
+                - Occasionally progresses to cirrhosis and liver failure<br>
+                - Typically occurs in overweight, diabetic, hyperlipidemic subjects<br>
+                - Jejunoileal by-pass may be aetiology<br>
+                - Glucocorticoid helps cure<br>
+                - May be caused by certain drugs
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q59" value="Occasionally progresses to cirrhosis and liver failure"> Occasionally progresses to cirrhosis and liver failure</label>
+                <label><input type="radio" name="q59" value="Typically occurs in overweight, diabetic, hyperlipidemic subjects"> Typically occurs in overweight, diabetic, hyperlipidemic subjects</label>
+                <label><input type="radio" name="q59" value="Jejunoileal by-pass may be aetiology"> Jejunoileal by-pass may be aetiology</label>
+                <label><input type="radio" name="q59" value="Glucocorticoid helps cure"> Glucocorticoid helps cure</label>
+                <label><input type="radio" name="q59" value="May be caused by certain drugs"> May be caused by certain drugs</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-60">
+            <p>60-A 45-year-old man is noted to have non-tender, smooth hepatomegaly associated with Dupuytren's contracture and parotid enlargement. He recently returned from a holiday in Thailand. What is the likely diagnosis?<br>
+                - Primary hepatoma<br>
+                - Hydatid disease<br>
+                - Alcoholic liver disease<br>
+                - Viral hepatitis<br>
+                - Tricuspid regurgitation
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q60" value="Primary hepatoma"> Primary hepatoma</label>
+                <label><input type="radio" name="q60" value="Hydatid disease"> Hydatid disease</label>
+                <label><input type="radio" name="q60" value="Alcoholic liver disease"> Alcoholic liver disease</label>
+                <label><input type="radio" name="q60" value="Viral hepatitis"> Viral hepatitis</label>
+                <label><input type="radio" name="q60" value="Tricuspid regurgitation"> Tricuspid regurgitation</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-61">
+            <p>61- A 45-year-old woman presents with a 1-week history of jaundice, anorexia, and right upper quadrant discomfort. On examination she is icteric, with a tender right upper quadrant and liver span of 14 cm. There is no shifting dullness or pedal edema and the heart and lungs are normal. On further inquiry, she reports consuming one bottle of wine a day for the past 6 months. Which of the following laboratory tests is most likely to be characteristic of a patient with jaundice secondary to alcoholic hepatitis?<br>
+                - ratio of AST:ALT is 3:1 and the AST is 500 U/L<br>
+                - ratio of AST:ALT is 2:1 and the AST is 250 U/L<br>
+                - ratio of AST:ALT is 1:1 and the AST is 500 U/L<br>
+                - ratio of AST:ALT is 1:1 and the AST is 250 U/L<br>
+                - ratio of AST:ALT is 1:3 and the AST is 750
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q61" value="ratio of AST:ALT is 3:1 and the AST is 500 U/L"> ratio of AST:ALT is 3:1 and the AST is 500 U/L</label>
+                <label><input type="radio" name="q61" value="ratio of AST:ALT is 2:1 and the AST is 250 U/L"> ratio of AST:ALT is 2:1 and the AST is 250 U/L</label>
+                <label><input type="radio" name="q61" value="ratio of AST:ALT is 1:1 and the AST is 500 U/L"> ratio of AST:ALT is 1:1 and the AST is 500 U/L</label>
+                <label><input type="radio" name="q61" value="ratio of AST:ALT is 1:1 and the AST is 250 U/L"> ratio of AST:ALT is 1:1 and the AST is 250 U/L</label>
+                <label><input type="radio" name="q61" value="ratio of AST:ALT is 1:3 and the AST is 750"> ratio of AST:ALT is 1:3 and the AST is 750</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-62">
+            <p>62- In women, what is the average amount of reported daily alcohol intake that is associated with the development of chronic liver disease?<br>
+                - 1 drink<br>
+                - 2 drinks<br>
+                - 3 drinks<br>
+                - 6 drinks<br>
+                - 12 drinks
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q62" value="1 drink"> 1 drink</label>
+                <label><input type="radio" name="q62" value="2 drinks"> 2 drinks</label>
+                <label><input type="radio" name="q62" value="3 drinks"> 3 drinks</label>
+                <label><input type="radio" name="q62" value="6 drinks"> 6 drinks</label>
+                <label><input type="radio" name="q62" value="12 drinks"> 12 drinks</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-63">
+            <p>63-A patient on your ward is diagnosed with hepatocellular carcinoma. You are asked to perform a tumour marker level on this patient. Which of the following tumour markers are elevated in hepatocellular carcinoma?<br>
+                - α-fetoprotein<br>
+                - Carcinoembryonic antigen (CEA)<br>
+                - CA 15-3<br>
+                - HCG<br>
+                - CA 125
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q63" value="α-fetoprotein"> α-fetoprotein</label>
+                <label><input type="radio" name="q63" value="Carcinoembryonic antigen (CEA)"> Carcinoembryonic antigen (CEA)</label>
+                <label><input type="radio" name="q63" value="CA 15-3"> CA 15-3</label>
+                <label><input type="radio" name="q63" value="HCG"> HCG</label>
+                <label><input type="radio" name="q63" value="CA 125"> CA 125</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-64">
+            <p>64-What is the most common cause of hepatocellular carcinoma in the United Kingdom?<br>
+                - Haemochromatosis<br>
+                - Hepatitis B<br>
+                - Alcohol excess<br>
+                - Aflatoxin<br>
+                - Hepatitis C
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q64" value="Haemochromatosis"> Haemochromatosis</label>
+                <label><input type="radio" name="q64" value="Hepatitis B"> Hepatitis B</label>
+                <label><input type="radio" name="q64" value="Alcohol excess"> Alcohol excess</label>
+                <label><input type="radio" name="q64" value="Aflatoxin"> Aflatoxin</label>
+                <label><input type="radio" name="q64" value="Hepatitis C"> Hepatitis C</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-65">
+            <p>65-Which one of the following patients is most likely to require screening for hepatocellular carcinoma?<br>
+                - A 45-year-old man with liver cirrhosis secondary to hepatitis C<br>
+                - A 33-year-old man with HIV. He is taking antiretroviral therapy<br>
+                - A 22-year-old man with alpha-1 antitrypsin deficiency. He has no evidence of current liver disease<br>
+                - A 52-year-old woman with alcohol-related liver cirrhosis who is still drinking<br>
+                - A 75-year-old man who drinks 100 units / week. He has no current signs of liver disease
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q65" value="A 45-year-old man with liver cirrhosis secondary to hepatitis C"> A 45-year-old man with liver cirrhosis secondary to hepatitis C</label>
+                <label><input type="radio" name="q65" value="A 33-year-old man with HIV. He is taking antiretroviral therapy"> A 33-year-old man with HIV. He is taking antiretroviral therapy</label>
+                <label><input type="radio" name="q65" value="A 22-year-old man with alpha-1 antitrypsin deficiency. He has no evidence of current liver disease"> A 22-year-old man with alpha-1 antitrypsin deficiency. He has no evidence of current liver disease</label>
+                <label><input type="radio" name="q65" value="A 52-year-old woman with alcohol-related liver cirrhosis who is still drinking"> A 52-year-old woman with alcohol-related liver cirrhosis who is still drinking</label>
+                <label><input type="radio" name="q65" value="A 75-year-old man who drinks 100 units / week. He has no current signs of liver disease"> A 75-year-old man who drinks 100 units / week. He has no current signs of liver disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-66">
+            <p>66-Commonest cause of post - transfusion hepatitis is..<br>
+                - Hepatitis B<br>
+                - Hepatitis C<br>
+                - Hepatitis D<br>
+                - Hepatitis<br>
+                - Delta hepatitis
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q66" value="Hepatitis B"> Hepatitis B</label>
+                <label><input type="radio" name="q66" value="Hepatitis C"> Hepatitis C</label>
+                <label><input type="radio" name="q66" value="Hepatitis D"> Hepatitis D</label>
+                <label><input type="radio" name="q66" value="Hepatitis"> Hepatitis</label>
+                <label><input type="radio" name="q66" value="Delta hepatitis"> Delta hepatitis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-67">
+            <p>67- A patient presents with severe jaundice. Physical examination reveals a nodular, enlarged liver. One nodule is much larger than the others. CT of the abdomen confirms multinodular cirrhosis and demonstrates a 7 -cm mass near the lower border of the liver. CT-guided biopsy of this mass shows a malignant tumour derived from hepatic parenchymal cells. Which of the following risk factors is most strongly associated with this condition?<br>
+                - Aflatoxin exposure<br>
+                - Hemochromatosis<br>
+                - Hepatitis B virus infection<br>
+                - Lead exposure<br>
+                - Wilson disease
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q67" value="Aflatoxin exposure"> Aflatoxin exposure</label>
+                <label><input type="radio" name="q67" value="Hemochromatosis"> Hemochromatosis</label>
+                <label><input type="radio" name="q67" value="Hepatitis B virus infection"> Hepatitis B virus infection</label>
+                <label><input type="radio" name="q67" value="Lead exposure"> Lead exposure</label>
+                <label><input type="radio" name="q67" value="Wilson disease"> Wilson disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-68">
+            <p>68- You see a 57-year-old man who has been diagnosed with hepatocellular carcinoma (HCC). You are asked about risk factors in HCC by your consultant. Which of the following is not a known predisposing factor for developing hepatocellular carcinoma?<br>
+                - Hepatitis B virus<br>
+                - Liver cirrhosis<br>
+                - Hepatitis C virus<br>
+                - Hepatitis A virus<br>
+                - Aflatoxin
+            </p>
+            <div class="options">
+                <label><input type="radio" name="q68" value="Hepatitis B virus"> Hepatitis B virus</label>
+                <label><input type="radio" name="q68" value="Liver cirrhosis"> Liver cirrhosis</label>
+                <label><input type="radio" name="q68" value="Hepatitis C virus"> Hepatitis C virus</label>
+                <label><input type="radio" name="q68" value="Hepatitis A virus"> Hepatitis A virus</label>
+                <label><input type="radio" name="q68" value="Aflatoxin"> Aflatoxin</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 68;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "Ascending cholangitis",
+            q2: "Observation",
+            q3: "Low-fat diet",
+            q4: "Wilson's disease",
+            q5: "Chromosome 13",
+            q6: "95%",
+            q7: "Reduced serum ceruloplasmin",
+            q8: "Penicillamine",
+            q9: "Transferrin saturation + ferritin",
+            q10: "Transferrin saturation",
+            q11: "Primary biliary cirrhosis",
+            q12: "Primary biliary cirrhosis (PBC)",
+            q13: "On the palm and soles",
+            q14: "Gamma Glutamyl transpeptidase (GGT) estimation",
+            q15: "Sjogren's syndrome",
+            q16: "Primary biliary cirrhosis",
+            q17: "Anti-mitochondrial antibodies",
+            q18: "Mitochondria",
+            q19: "20-fold increased risk",
+            q20: "HLA DR8",
+            q21: "IgM",
+            q22: "liver transplantation",
+            q23: "Ulcerative colitis",
+            q24: "Primary sclerosing cholangitis",
+            q25: "Alkaline phosphatase (ALP) level",
+            q26: "Clostridium difficile",
+            q27: "Pseudomembranous colitis",
+            q28: "cephalosporin therapy",
+            q29: "Piperacillin-tazobactam",
+            q30: "Oral metronidazole",
+            q31: "Oral vancomycin for 14 days",
+            q32: "MUST",
+            q33: "Intravenous cefotaxime",
+            q34: "Intravenous antibiotics",
+            q35: "Mesenteric ischaemia",
+            q36: "Ischemic colitis",
+            q37: "Splenic flexure",
+            q38: "Anthraquinone laxative abuse",
+            q39: "Amoxicillin + ciprofloxacin + metronidazole",
+            q40: "renal failure",
+            q41: "Lactase",
+            q42: "The colon absorbs electrolytes and water",
+            q43: "Colorectal cancer",
+            q44: "sigmoid",
+            q45: "Sigmoid Colon",
+            q46: "Hereditary non-polyposis colorectal carcinoma",
+            q47: "Non-inherited colon cancer often involves mutation of the adenomatous polyposis coli gene",
+            q48: "DNA mismatch repair",
+            q49: "Rifuxamine, oral",
+            q50: "Splanchnic vasodilation",
+            q51: "Terlipressin",
+            q52: "Autoimmune hepatitis",
+            q53: "Liver function tests",
+            q54: "IgG",
+            q55: "NAFLD",
+            q56: "Irritable bowel syndrome",
+            q57: "Type 1 diabetes mellitus",
+            q58: "Weight loss",
+            q59: "Glucocorticoid helps cure",
+            q60: "Alcoholic liver disease",
+            q61: "ratio of AST:ALT is 2:1 and the AST is 250 U/L",
+            q62: "2 drinks",
+            q63: "α-fetoprotein",
+            q64: "Hepatitis C",
+            q65: "A 45-year-old man with liver cirrhosis secondary to hepatitis C",
+            q66: "Hepatitis C",
+            q67: "Hepatitis B virus infection",
+            q68: "Hepatitis A virus"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
